@@ -17,10 +17,10 @@ public class RestAssuredTest {
 	private final int PORT = 8080;
 	private final String ENDPOINT_URL = String.format("http://localhost:%s/an/endpoint", PORT);
 	
+	private WiremockService wiremock = new WiremockService();
+	
 	@Rule
 	public WireMockRule wireMockRule = new WireMockRule(PORT);
-	
-	private WiremockService wiremock = new WiremockService();
 	     
 	@Test
 	public void testStatusCodePositive() {
