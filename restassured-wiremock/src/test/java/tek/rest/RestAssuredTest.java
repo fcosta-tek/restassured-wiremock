@@ -14,8 +14,11 @@ import tek.rest.mocks.WiremockService;
 
 public class RestAssuredTest {
 	
+	private final int PORT = 8080;
+	private final String ENDPOINT_URL = String.format("http://localhost:%s/an/endpoint", PORT);
+	
 	@Rule
-	public WireMockRule wireMockRule = new WireMockRule(8080);
+	public WireMockRule wireMockRule = new WireMockRule(PORT);
 	
 	private WiremockService wiremock = new WiremockService();
 	     
@@ -26,9 +29,9 @@ public class RestAssuredTest {
 	         
 		RestAssured.
 	    given().
-        accept(ContentType.JSON).
+        	accept(ContentType.JSON).
 	    when().
-	        get("http://localhost:8080/an/endpoint").
+	        get(ENDPOINT_URL).
 	    then().
 	        assertThat().statusCode(200);
 	}
@@ -38,7 +41,7 @@ public class RestAssuredTest {
 	         
 		wiremock.setupStub();
 	     
-	    String response = RestAssured.get("http://localhost:8080/an/endpoint").asString();
+	    String response = RestAssured.get(ENDPOINT_URL).asString();
 	    assertEquals("You've reached a valid WireMock endpoint", response);
 	}
 	
@@ -49,10 +52,10 @@ public class RestAssuredTest {
 	         
 	    RestAssured.
 	    given().
-        accept(ContentType.JSON).
-        pathParam("id", 1).
+        	accept(ContentType.JSON).
+        	pathParam("id", 1).
 	    when().
-	        get("http://localhost:8080/an/endpoint/{id}").
+	        get(ENDPOINT_URL + "/{id}").
 	    then().
 	        assertThat().statusCode(Matchers.equalTo(200)).
 	        and().
