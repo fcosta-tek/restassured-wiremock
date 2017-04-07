@@ -1,4 +1,4 @@
-package tek.rest;
+package tek.rest.app;
 
 import static org.junit.Assert.*;
 
