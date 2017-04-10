@@ -2,9 +2,10 @@ package tek.rest.app;
 
 import static org.junit.Assert.*;
 
-import org.hamcrest.Matchers;
-import org.junit.Test;
+import java.util.Arrays;
 
+import static org.hamcrest.Matchers.*;
+import org.junit.Test;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
@@ -39,8 +40,9 @@ public class RestAssuredTest extends BaseTest {
 	    when().
 	        get(ENDPOINT_URL + "/{id}").
 	    then().
-	        assertThat().statusCode(Matchers.equalTo(200)).
-	        and().
-	        assertThat().body("cars.name[1]", Matchers.equalTo("BMW"));
+	        assertThat().statusCode(equalTo(200)).
+	    and().
+	        assertThat().body("cars.name[2]", equalTo("Fiat")).
+	    	assertThat().body("cars.models[2]", equalTo(Arrays.asList("500", "Panda")));
 	}
 }
