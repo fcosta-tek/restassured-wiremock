@@ -11,7 +11,7 @@ import com.github.tomakehurst.wiremock.junit.WireMockRule;
 
 import tek.rest.mocks.WiremockService;
 
-public class BaseTest {
+public abstract class BaseTest {
 	
 	private final String CONFIG_FILE_NAME = "config.properties";
 	private final String MOCK_WEBSERVICE_PROPERTY = "mock_webservice";
