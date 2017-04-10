@@ -2,3 +2,5 @@ restassured-wiremock/target/
 restassured-wiremock/.settings/
 restassured-wiremock/.classpath
 restassured-wiremock/.project
+restassured-wiremock/.idea/
+*.iml
